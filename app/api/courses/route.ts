@@ -6,3 +6,8 @@ export async function GET(){
     return NextResponse.json({msg:"it is workign"})
 }
 
+export async function POST(request:Request){
+    const reqBody=await request.json();
+    await connectDb();
+    return NextResponse.json({msg:"Post request is working",data:reqBody})
+}

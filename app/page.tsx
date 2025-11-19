@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="">
-        this is codecook 
+        this is codecook  hii
     </div>
   );
 }
