@@ -4,9 +4,15 @@ import { NextResponse } from "next/server";
 
 
 
-export async function GET(){
+export async function GET(request:Request){
     await connectDb()
-    const problems=await Problem.find({})
+     const {searchParams}=new URL(request.url)
+    const type=searchParams.get("type")
+    const query:any={}
+    if(type){
+        query.slug=type
+    }  
+    const problems=await Problem.find(query)
    if(!problems) return NextResponse.json({msg:'no problems found'})
     return NextResponse.json({msg:'problems found ',data:problems})
 }

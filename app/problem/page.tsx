@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Problem = {
   _id: string;
@@ -147,12 +148,17 @@ const ProblemsPage = () => {
 
                 {/* Third row: placeholder for actions (View / Solve) */}
                 <div className="mt-3 flex justify-end">
+                  <Link href={{
+                    pathname:'/compiler',
+                    query:{type:problem.slug}
+                  }}>
                   <button
                     className="text-xs sm:text-sm rounded-full border border-slate-600 px-3 py-1 hover:bg-slate-800"
-                    // later: onClick={() => router.push(`/problems/${problem.slug}`)}
+                   
                   >
                     View problem
                   </button>
+                  </Link>
                 </div>
               </div>
             ))}
