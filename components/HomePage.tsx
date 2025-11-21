@@ -4,7 +4,7 @@ import Page4 from '@/components/UI/Page4'
 import Page5 from '@/components/UI/Page5'
 import React from 'react'
 
-export default function page() {
+export default function HomePage() {
   return (
    <>
    <Page1/>

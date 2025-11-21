@@ -1,5 +1,8 @@
+"use client"
+
 import { Code2, Trophy, BookOpen, User, Search, Bell } from 'lucide-react';
 import Button from './UI/Button';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   currentPage: 'home' | 'problems' | 'blogs' | 'profile';
@@ -7,40 +10,42 @@ interface HeaderProps {
 }
 
 function Header() {
+
+    const router = useRouter()
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/55 border-b border-blue-500/20">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/55 border-b border-blue-500/20 px-10">
       <div className="max-w-7xl mx-auto ">
         <div className="flex  justify-between gap-4 h-16">
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="relative">
               <div className="absolute inset-0"></div>
-              <Code2 className="relative w-8 h-8 text-black" />
+              <Code2 className="relative w-8 h-8 text-blue-500" />
             </div>
-            <span className=" text-black">Codecook</span>
+            <span className=" text-blue-500">Codecook</span>
             <nav className="hidden md:flex items-center gap-1 text-black">
             <button
-              
-              className={`px-4 py-2 rounded-lg transition-all s `}
+              onClick={()=>router.push("/")}
+              className={`px-4 py-2 rounded-lg transition-all hover:bg-blue-500/10`}
             >
               Home
             </button>
             <button
-              
-              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all `}
+              onClick={()=>router.push("/Practise")}
+              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all hover:bg-blue-500/10`}
             >
               <Trophy className="w-4 h-4" />
               Problems
             </button>
             <button
              
-              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all `}
+              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all hover:bg-blue-500/10`}
             >
               <BookOpen className="w-4 h-4" />
               Blogs
             </button>
             <button
              
-              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all `}
+              className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all hover:bg-blue-500/10`}
             >
               <BookOpen className="w-4 h-4" />
               Courses
@@ -66,8 +71,8 @@ function Header() {
             </button> */}
 
             <div className='flex gap-3'>
-                <Button intent='secondary' size='small' title='Login'/>
-                <Button intent='primary' size='small' title='signup'/>
+                <Button intent='secondary' size='small' title='Login' onClick={()=>router.push("/login")}/>
+                {/* <Button intent='primary' size='small' title='signup'/> */}
             </div>
            
           </div>

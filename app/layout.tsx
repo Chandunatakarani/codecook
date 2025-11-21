@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { AppContextProvier } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +38,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AppContextProvier>
         {!shouldHideNavbar && <Navbar/>}
         {children}
         <Toaster/>
+        </AppContextProvier>
       </body>
     </html>
   );

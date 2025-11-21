@@ -7,6 +7,7 @@ import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
 
 export const POST = asyncHandler(async (request: Request) => {
+    await connectDb()
     const { fullname, email, company, password } = await request.json()
     if (!fullname || !email || !company || !password) throw new ApiError(400, false, "All field are mandatory")
     const findUser = await Users.findOne({
@@ -15,13 +16,17 @@ export const POST = asyncHandler(async (request: Request) => {
         ]
     })
 
-    const hashPassword = bcrypt.hash(password , 10)
-    if (!findUser) throw new ApiError(401, false, "User already exists")
+
+    const hashPassword = await bcrypt.hash(password , 10)
+    console.log("this is hashing" , hashPassword)
+    console.log("this is user find" , findUser)
+    if (findUser) throw new ApiError(401, false, "User already exists")
     const newUser = await Users.create({
-        username:fullname , 
+        userName:fullname , 
         email , 
         company , 
         password:hashPassword
 })
     return new ApiResponse(true , "User Created successfully" , newUser)
 })
+

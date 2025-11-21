@@ -15,14 +15,15 @@ const InputStyles = cva(["outline-none rounded-xl"] , {
 type InputProps = {
     intent: "primary";
     size: "large";
-    onChange?: (e: FormEvent<HTMLInputElement>) => void;
+    onChange?: (e:any) => void;
     value?: string;
     title?: string;
-    type?: string;
+    type?: string; 
+    name?:string
 };
 
-function Input({intent , size  , onChange , title , type , value}:InputProps){
-    return <input className={InputStyles({intent:intent , size:size})} type={type} onChange={onChange} placeholder={title} value={value}/>
+function Input({intent , name , size  , onChange , title , type , value}:InputProps){
+    return <input name={name} className={InputStyles({intent:intent , size:size})} type={type} onChange={onChange} placeholder={title} value={value}/>
 }
 
 export default Input 

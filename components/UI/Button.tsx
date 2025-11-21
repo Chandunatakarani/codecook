@@ -1,10 +1,10 @@
 import { cva } from "class-variance-authority";
 
-const button = cva(["font-semibold rounded-md"] , {
+const button = cva(["font-semibold rounded-md transition-all ease-in"] , {
     variants:{
         intent:{
             primary:"bg-blue-700 text-white "  , 
-            secondary:"border-2 text-blue-700 border-blue-700 " , 
+            secondary:"border-2 text-blue-500  border-blue-500 hover:bg-blue-500 hover:text-white" , 
             disabled:"bg-blue-700/45 text-white"
         } , 
         size:{
@@ -25,7 +25,8 @@ type ButtonProps = {
     onClick?:()=>void , 
     loading?:boolean , 
     disable?:boolean ,
-    loadingText?:string
+    loadingText?:string , 
+    type?:"button" | "submit"
 }
 
 function Button({intent, size , title , onClick , loading , disable , loadingText}:ButtonProps){
