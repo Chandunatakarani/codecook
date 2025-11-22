@@ -37,7 +37,7 @@ function Header() {
               Problems
             </button>
             <button
-             
+              onClick={()=>router.push("/blogs")}
               className={`flex items-center gap-1 px-4 py-2 rounded-lg transition-all hover:bg-blue-500/10`}
             >
               <BookOpen className="w-4 h-4" />
